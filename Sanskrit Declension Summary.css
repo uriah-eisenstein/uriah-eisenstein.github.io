@@ -1,0 +1,51 @@
+
+.devanagari
+{
+ display:none;	/* Default initial value */
+}
+
+.ending-regular
+{
+ color:green;
+}
+
+.ending-irregular
+{
+ color:red;
+ font-weight:bold;
+}
+
+.ending-feminine
+{
+ color:darkOrange;
+ font-weight:bold;
+}
+
+.stem-change
+{
+ color:purple;
+ font-weight:bold;
+}
+
+.suffix
+{
+ color:blue;
+ font-weight:bold;
+}
+
+/* Style only the meanings themselves inside <td>s, not the row header inside <th> */
+.meaning td
+{
+ font-style:italic;
+}
+
+/* Stem strengths - can be used for the <td> element itself	*/
+.stem-strong
+{
+ background-color:#FFFFA0;
+}
+
+.stem-middle
+{
+ background-color:#FFFFD0;
+}

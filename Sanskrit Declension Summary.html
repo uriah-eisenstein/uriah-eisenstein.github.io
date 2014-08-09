@@ -1,0 +1,449 @@
+﻿<html>
+ <head>
+  <title>Sanskrit Declension Summary</title>
+  <meta name="author" content="Uriah Eisenstein">
+  <link rel=stylesheet href="Sanskrit Declension Summary.css" type="text/css">
+  <script>
+	function numberFootnotes()
+	{
+		var footnotes = document.getElementsByTagName("sup");
+		var index = 0;
+		var anchorPattern = '<a href="#footnote%i">%i</a>';		// Initial value: link to footnote at bottom of page
+		for(var i = 0; i < footnotes.length; ++i) {
+			var directive = footnotes[i].innerHTML;
+			if(directive == "start-footnotes") {
+				index = 1;
+				anchorPattern = '<a id="footnote%i">%i</a>';	// Anchors to link to
+			} else if(directive != "-")
+				++index;
+			footnotes[i].innerHTML = anchorPattern.replace(/%i/g, index);
+		}
+	}
+	function adjustSectionWidths()
+	{
+		var mainTable = document.getElementById("main-table");
+		var firstRowCells = mainTable.rows[0].cells;
+		var width = 0;
+		for(var i = 0; i < firstRowCells.length; ++i) 
+			width += firstRowCells[i].colSpan;
+		console.log("table width: " + width);
+		var sections = document.getElementsByClassName("section");
+		for(var i = 0; i < sections.length; ++i)
+			sections[i].colSpan = width;
+	}
+	function showDevanagari(show)
+	{
+		console.log("showDevanagari: " + show);
+		display = show ? "inline" : "none";
+		elements = document.getElementsByClassName("devanagari");
+		for(var i = 0; i < elements.length; ++i)
+			elements[i].style.display = display;
+	}
+  </script>
+ </head>
+ <body onload="{ numberFootnotes(); adjustSectionWidths(); }">
+  <h1>Sanskrit Declension Summary</h1>
+  <h1><font face="Sanskrit 2003">संग्रहो विभक्तीनां संस्कृतस्य</font></h1>
+  <p>The Sanskrit declension system is rather complex, and unfortunately most resources seem to either focus on the a-stems (indeed the largest class of nouns, but 
+  also the most different from the others) and neglect the other noun classes, or provide lengthy tables and details about all the declensions without pointing out 
+  the similarities &ndash; of which there are in fact quite a few, as the following table attempts to emphasize.</p>
+  <p>The declension paradigms are those of Classical Sanskrit, and are based on <a href="https://en.wikisource.org/wiki/Sanskrit_Grammar">Sanskrit Grammar</a> by 
+  William Dwight Whitney.</p>
+  <h3>General Notes</h3>
+  <ul>
+   <li>Masculines and Feminines of the same stem type generally decline the same. Exceptions are the i- and u-stems, shown below separately, and the Accusative 
+   Plural of all vowel stems.</li>
+   <li>Neuters take the same case endings as Masculines except in the Nominative and Accusative. They are therefore omitted from the main table.</li>
+   <li>Effects of internal Sandhi are not marked below. These generally involve the changes n &rarr; ṇ and s &rarr; ṣ.</li>
+   <li>Forms which are identical throughout the declension are merged, e.g. the Ablative and Genitive Singular of all declensions other than the a-stems.</li>
+   <li>The visarga ḥ is used for final -s and -r, since this is the ending encountered in isolation.</li>
+   <li>Case-forms are given in <a href=http://en.wikipedia.org/wiki/IAST>IAST</a> transcript, since this makes it possible to mark consonants and vowels separately
+   (browsers don't deal well with it with Devanagari conjuncts).</li>
+   <li>Again due to rendering technicalities, accent is currently not marked in the case forms.</li>
+  </ul>
+  <h3>Color Markings</h3>
+  <ul>
+   <li><span class=ending-regular>Green</span> marks the regular endings &ndash; generally those of the consonant stems, appearing also in most other cases.</li>
+   <li><span class=ending-irregular>Red</span> marks irregular endings.</li>
+   <li><span class=ending-feminine>Orange</span> marks alternative endings taken by long-vowel stems (generally feminine) in some Singular cases.</li>
+   <li><span class=stem-change>Purple</span> indicates a stem change before the ending &ndash; mostly a vowel <span class=stem-change>L</span>engthened, 
+	   <span class=stem-change>G</span>unated or <span class=stem-change>V</span>rddhied.</li>
+   <li><span class=suffix>Blue</span> marks an inserted element, such as <span class=suffix>n</span> or <span class=suffix>y</span>.</li>
+   <li><span class=stem-strong>Strong</span> and <span class=stem-middle>Middle</span> cases, where relevant, are marked by the background color. The other cases in 
+       the same declensions are weak.</li>
+  </ul>
+  <p><input type="checkbox" onchange="showDevanagari(this.checked)">Show case-forms in Devanagari as well</input></p>
+  <table id="main-table" border=1 rules=all frame=box cellpadding=4>
+   <tr align=center>
+    <th>Stem</th>
+	<td rowspan=4 valign=top>(regular<br/> endings)</td>
+	<td>गज<br/>gaja</td>
+	<td>अन्य<br/>anya</td>
+	<td>अन्या<br/>anyā</td>
+	<td>मुद्रा<br/>mudrā</td>
+	<td>अग्नि<br/>agni</td>
+	<td>रात्रि<br/>rātri</td>
+	<td>गुरु<br/>guru</td>
+	<td>धेनु<br/>dhenu</td>
+	<td>देवी<br/>devī</td>
+	<td>वधू<br/>vadhū</td>
+	<td>दातृ<br/>dātṛ</td>
+	<td>राजन्<br/>rājan</td>
+   </tr>
+   <tr align=center class="meaning">
+    <th>Meaning</th>
+	<td>Elephant</td>
+	<td colspan=2>Other</td>
+	<td>Stamp, Seal</td>
+	<td>Fire</td>
+	<td>Night</td>
+	<td>Teacher</td>
+	<td>Cow</td>
+	<td>Goddess</td>
+	<td>Woman</td>
+	<td>Giver</td>
+	<td>King</td>
+   </tr>
+   <tr align=center valign=bottom><!-- valign due to the footnote superscript -->
+    <th>Class</th>
+	<td>a-stem</td>
+	<td colspan=2>pronominal<sup></sup></td>
+	<td>ā-stem</td>
+	<td colspan=2>i-stem</td>
+	<td colspan=2>u-stem</td>
+	<td>ī-stem<sup></sup></td>
+	<td>ū-stem<sup>-</sup></td>
+	<td>ṛ-stem</td>
+	<td>consonant stem<sup></sup></td>
+   </tr>
+   <tr align=center>
+    <th>Gender</th>
+	 <td>M</td>
+	 <td>M</td>
+	 <td>F</td>
+	 <td>F</td>
+	 <td>M</td>
+	 <td>F</td>
+	 <td>M</td>
+	 <td>F</td>
+	 <td>F</td>
+	 <td>F</td>
+	 <td>M</td>
+	 <td>M</td>
+   </tr>
+   <tr>
+    <th class=section>Singular</th>
+   </tr>
+   <tr>
+    <th>Nom</th>
+	<td><span class=ending-regular>-ḥ</span></td>
+	<td><span class=devanagari>गजः<br/></span>gaja<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>अन्यः<br/></span>anya<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>अन्या<br/></span>anyā<span class=ending-irregular>∅</span></td>
+	<td><span class=devanagari>मुद्रा<br/></span>mudrā<span class=ending-irregular>∅</span></td>
+	<td><span class=devanagari>अग्निः<br/></span>agni<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>रात्रिः<br/></span>rātri<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>गुरुः<br/></span>guru<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>धेनुः<br/></span>dhenu<span class=ending-regular>ḥ</span></td>
+	<td><span class=devanagari>देवी<br/></span>devī<span class=ending-irregular>∅</span></td>
+	<td><span class=devanagari>वधूः<br/></span>vadhū<span class=ending-regular>ḥ</span></td>
+	<td class=stem-strong><span class=devanagari>दाता<br/></span>dāt<span class=ending-irregular>ā</span></td>
+	<td class=stem-strong><span class=devanagari>राजा<br/></span>rāj<span class=ending-irregular>ā</span></td>
+   </tr>
+   <tr>
+    <th>Acc</th>
+	<td><span class=ending-regular>-m</span></td>
+	<td><span class=devanagari>गजम्<br/></span>gaja<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>अन्यम्<br/></span>anya<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>अन्याम्<br/></span>anyā<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>मुद्राम्<br/></span>mudrā<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>अग्निम्<br/></span>agni<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>रात्रिम्<br/></span>rātri<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>गुरुम्<br/></span>guru<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>धेनुम्<br/></span>dhenu<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>देवीम्<br/></span>devī<span class=ending-regular>m</span></td>
+	<td><span class=devanagari>वधूम्<br/></span>vadhū<span class=ending-regular>m</span></td>
+ 	<td class=stem-strong><span class=devanagari>दाताराम्<br/></span>dātār<span class=ending-regular>am</span></td>
+ 	<td class=stem-strong><span class=devanagari>राजानाम्<br/></span>rājān<span class=ending-regular>am</span></td>
+  </tr>
+   <tr>
+    <th>Inst</th>
+ 	<td><span class=ending-regular>-ā</span></td>
+	<td><span class=devanagari>गजेन<br/></span>gaj<span class=ending-irregular>ena</span></td>
+	<td><span class=devanagari>अन्येन<br/></span>any<span class=ending-irregular>ena</span></td>
+	<td><span class=devanagari>अन्यया<br/></span>
+		any<span class=stem-change>a</span><span class=suffix>y</span><span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>मुद्रया<br/></span>
+		mudr<span class=stem-change>a</span><span class=suffix>y</span><span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>अग्निना<br/></span>agni<span class=suffix>n</span><span class=ending-regular>ā</span></td>
+ 	<td><span class=devanagari>रात्र्या<br/></span>rātry<span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>गुरुणा<br/></span>guru<span class=suffix>ṇ</span><span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>धेन्वा<br/></span>dhenv<span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>देव्या<br/></span>devy<span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>वध्वा<br/></span>vadhv<span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>दात्रा<br/></span>dātr<span class=ending-regular>ā</span></td>
+	<td><span class=devanagari>राज्ञा<br/></span>rājñ<span class=ending-regular>ā</span></td>
+   </tr>
+   <tr>
+    <th>Dat</th>
+ 	<td><span class=ending-regular>-e</span></td>
+	<td><span class=devanagari>गजाय<br/></span>gaj<span class=ending-irregular>āya</span></td>
+	<td><span class=devanagari>अन्यस्मै<br/></span>anya<span class=suffix>sm</span><span class=ending-irregular>ai</span></td>
+	<td><span class=devanagari>अन्यस्यै<br/></span>
+		any<span class=stem-change>a</span><span class=suffix>sy</span><span class=ending-feminine>ai</span></td>
+	<td><span class=devanagari>मुद्रायै<br/></span>mudrā<span class=suffix>y</span><span class=ending-feminine>ai</span></td>
+ 	<td><span class=devanagari>अग्नये<br/></span>
+		agn<span class=stem-change>ay</span><span class=ending-regular>e</span> [<span class=stem-change>V</span>]</td>
+ 	<td><span class=devanagari>रात्रये<br/></span>
+		rātr<span class=stem-change>ay</span><span class=ending-regular>e</span> [<span class=stem-change>V</span>]<br/>
+		<span class=devanagari>रात्र्यै<br/></span>rātry<span class=ending-feminine>ai</span></td>
+ 	<td><span class=devanagari>गुरवे<br/></span>gur<span class=stem-change>av</span><span class=ending-regular>e</span> [<span class=stem-change>V</span>]</td>
+ 	<td><span class=devanagari>धेनवे<br/></span>
+		dhen<span class=stem-change>av</span><span class=ending-regular>e</span> [<span class=stem-change>V</span>]<br/>
+		<span class=devanagari>धेन्वै<br/></span>dhenv<span class=ending-feminine>ai</span></td>
+	<td><span class=devanagari>देव्यै<br/></span>devy<span class=ending-feminine>ai</span></td>
+	<td><span class=devanagari>वध्वै<br/></span>vadhv<span class=ending-feminine>ai</span></td>
+ 	<td><span class=devanagari>दात्रे<br/></span>dātr<span class=ending-regular>e</span></td>
+ 	<td><span class=devanagari>राज्ञे<br/></span>rājñ<span class=ending-regular>e</span></td>
+   </tr>
+   <tr>
+    <th>Abl</th>
+ 	<td><span class=ending-regular>-aḥ</span></td>
+	<td><span class=devanagari>गजात्<br/></span>gaj<span class=ending-irregular>āt</span></td>
+	<td><span class=devanagari>अन्यस्मात्<br/></span>anya<span class=suffix>sm</span><span class=ending-irregular>āt</span></td>
+	<td rowspan=2><span class=devanagari>अन्यस्याः<br/></span>
+		any<span class=stem-change>a</span><span class=suffix>sy</span><span class=ending-feminine>āḥ</span></td>
+	<td rowspan=2><span class=devanagari>मुद्रायाः<br/></span>
+		mudrā<span class=suffix>y</span><span class=ending-feminine>āḥ</span></td>
+	<td rowspan=2><span class=devanagari>अग्नेः<br/></span>
+		agn<span class=ending-irregular>eḥ</span> [<span class=stem-change>V</span>]</td>
+	<td rowspan=2><span class=devanagari>रात्रेः<br/></span>
+		rātr<span class=ending-irregular>eḥ</span> [<span class=stem-change>V</span>]<br/>
+		<span class=devanagari>रात्र्याः<br/></span>rātry<span class=ending-feminine>āḥ</span></td>
+	<td rowspan=2><span class=devanagari>गुरोः<br/></span>
+		gur<span class=ending-irregular>oḥ</span> [<span class=stem-change>V</span>]</td>
+	<td rowspan=2><span class=devanagari>धेनोः<br/></span>
+		dhen<span class=ending-irregular>oḥ</span> [<span class=stem-change>V</span>]<br/>
+		<span class=devanagari>धेन्वाः<br/></span>dhenv<span class=ending-feminine>āḥ</span></td>
+ 	<td rowspan=2><span class=devanagari>देव्याः<br/></span>devy<span class=ending-feminine>āḥ</span></td>
+ 	<td rowspan=2><span class=devanagari>वध्वाः<br/></span>vadhv<span class=ending-feminine>āḥ</span></td>
+ 	<td rowspan=2><span class=devanagari>दातुः<br/></span>dāt<span class=ending-irregular>uḥ</span></td>
+ 	<td rowspan=2><span class=devanagari>राज्ञः<br/></span>rājñ<span class=ending-regular>aḥ</span></td>
+   </tr>
+   <tr>
+    <th>Gen</th>
+ 	<td><span class=ending-regular>-aḥ</span></td>
+	<td><span class=devanagari>गजस्य<br/></span>gaja<span class=ending-irregular>sya</span></td>
+	<td><span class=devanagari>अन्यस्य<br/></span>anya<span class=ending-irregular>sya</span></td>
+	<!-- Other forms are identical to the Ablative -->
+   </tr>
+   <tr>
+    <th>Loc</th>
+ 	<td><span class=ending-regular>-i</span></td>
+	<td><span class=devanagari>गजे<br/></span>gaj<span class=ending-regular>e</span><sup></sup></td>
+	<td><span class=devanagari>अन्यस्मिन्<br/></span>
+		anya<span class=suffix>sm</span><span class=ending-irregular>in</span></td>
+	<td><span class=devanagari>अन्यस्याम्<br/></span>
+		any<span class=stem-change>a</span><span class=suffix>sy</span><span class=ending-feminine>ām</span></td>
+	<td><span class=devanagari>मुद्रायाम्<br/></span>mudrā<span class=suffix>y</span><span class=ending-feminine>ām</span></td>
+	<td><span class=devanagari>अग्नौ<br/></span>agn<span class=ending-irregular>au</span></td>
+	<td><span class=devanagari>रात्रौ<br/></span>rātr<span class=ending-irregular>au</span><br/>
+		<span class=devanagari>रात्र्याम्<br/></span>rātry<span class=ending-feminine>ām</span></td>
+	<td><span class=devanagari>गुरौ<br/></span>gur<span class=ending-irregular>au</span></td>
+	<td><span class=devanagari>धेनौ<br/></span>dhen<span class=ending-irregular>au</span><br/>
+		<span class=devanagari>धेन्वाम्<br/></span>dhenv<span class=ending-feminine>ām</span></td>
+ 	<td><span class=devanagari>देव्याम्<br/></span>devy<span class=ending-feminine>ām</span></td>
+ 	<td><span class=devanagari>वध्वाम्<br/></span>vadhv<span class=ending-feminine>ām</span></td>
+ 	<td><span class=devanagari>दातरि<br/></span>
+		dāt<span class=stem-change>ar</span><span class=ending-regular>i</span><sup></sup></td>
+ 	<td><span class=devanagari>राज्ञि<br/></span>rājñ<span class=ending-regular>i</span><br/>
+		<span class=devanagari>राजनि<br/></span>rājan<span class=ending-regular>i</span></td>
+   </tr>
+   <tr>
+    <th>Voc</th>
+	<td><span class=stem-change>G</span><sup></sup></td>
+	<td><span class=devanagari>गज<br/></span>gaj<span class=ending-regular>a</span></td>
+	<td colspan=2 align=center>&mdash;</td>
+	<td><span class=devanagari>मुद्रे<br/></span>mudr<span class=ending-irregular>e</span></td>
+	<td><span class=devanagari>अग्ने<br/></span>agn<span class=ending-regular>e</span></td>
+	<td><span class=devanagari>रात्रे<br/></span>rātr<span class=ending-regular>e</span></td>
+	<td><span class=devanagari>गुरो<br/></span>gur<span class=ending-regular>o</span></td>
+	<td><span class=devanagari>धेनो<br/></span>dhen<span class=ending-regular>o</span></td>
+	<td><span class=devanagari>देवि<br/></span>dev<span class=stem-change>i</span></td>
+	<td><span class=devanagari>वधु<br/></span>vadh<span class=stem-change>u</span></td>
+	<td><span class=devanagari>दातर्<br/></span>dāt<span class=ending-regular>ar</span></td>
+ 	<td><span class=devanagari>राजन्<br/></span>rājan</td>
+   </tr>
+   <tr>
+    <th class=section>Dual</th>
+   </tr>
+   <tr>
+    <th>Nom/Acc/Voc</th>
+	<td><span class=ending-regular>-au</span></td>
+	<td><span class=devanagari>गजौ<br/></span>gaj<span class=ending-regular>au</span></td>
+ 	<td><span class=devanagari>अन्यौ<br/></span>any<span class=ending-regular>au</span></td>
+	<td><span class=devanagari>अन्ये<br/></span>any<span class=ending-irregular>e</span></td>
+	<td><span class=devanagari>मुद्रे<br/></span>mudr<span class=ending-irregular>e</span></td>
+	<td><span class=devanagari>अग्नी<br/></span>agn<span class=ending-irregular>ī</span></td>
+	<td><span class=devanagari>रात्री<br/></span>rātr<span class=ending-irregular>ī</span></td>
+	<td><span class=devanagari>गुरू<br/></span>gur<span class=ending-irregular>ū</span></td>
+	<td><span class=devanagari>धेनू<br/></span>dhen<span class=ending-irregular>ū</span></td>
+	<td><span class=devanagari>देव्यौ<br/></span>devy<span class=ending-regular>au</span></td>
+	<td><span class=devanagari>वध्वौ<br/></span>vadhv<span class=ending-regular>au</span></td>
+ 	<td class=stem-strong><span class=devanagari>दातारौ<br/></span>dātār<span class=ending-regular>au</span></td>
+ 	<td class=stem-strong><span class=devanagari>राजानौ<br/></span>rājān<span class=ending-regular>au</span></td>
+   </tr>
+   <tr>
+    <th>Inst/Dat/Abl</th>
+	<td><span class=ending-regular>-bhyām</span></td>
+	<td><span class=devanagari>गजाभ्याम्<br/></span>gaj<span class=stem-change>ā</span><span class=ending-regular>bhyām</span></td>
+ 	<td colspan=2 align=center><span class=devanagari>अन्याभ्याम्<br/></span>
+		anyā<span class=ending-regular>bhyām</span><sup></sup></td>
+	<td><span class=devanagari>मुद्राभ्याम्<br/></span>mudrā<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>अग्निभ्याम्<br/></span>agni<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>रात्रिभ्याम्<br/></span>rātri<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>गुरुभ्याम्<br/></span>guru<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>धेनुभ्याम्<br/></span>dhenu<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>देवीभ्याम्<br/></span>devī<span class=ending-regular>bhyām</span></td>
+	<td><span class=devanagari>वधूभ्याम्<br/></span>vadhū<span class=ending-regular>bhyām</span></td>
+ 	<td><span class=devanagari>दातृभ्याम्<br/></span>dātṛ<span class=ending-regular>bhyām</span></td>
+ 	<td class=stem-middle><span class=devanagari>राजभ्याम्<br/></span>rāja<span class=ending-regular>bhyām</span></td>
+   </tr>
+   <tr>
+    <th>Gen/Loc</th>
+	<td><span class=ending-regular>-oḥ</span></td>
+	<td><span class=devanagari>गजयोः<br/></span>gaja<span class=suffix>y</span><span class=ending-regular>oḥ</span></td>
+	<td colspan=2 align=center><span class=devanagari>अन्ययोः<br/></span>
+		anya<span class=suffix>y</span><span class=ending-regular>oḥ</span><sup>-</sup></td>
+	<td><span class=devanagari>मुद्रयोः<br/></span>mudr<span class=stem-change>a</span><span class=suffix>y</span><span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>अग्न्योः<br/></span>agny<span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>रात्र्योः<br/></span>rātry<span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>गुर्वोः<br/></span>gurv<span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>धेन्वोः<br/></span>dhenv<span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>देव्योः<br/></span>devy<span class=ending-regular>oḥ</span></td>
+	<td><span class=devanagari>वध्वोः<br/></span>vadhv<span class=ending-regular>oḥ</span></td>
+ 	<td><span class=devanagari>दात्रोः<br/></span>dātr<span class=ending-regular>oḥ</span></td>
+ 	<td><span class=devanagari>राज्ञोः<br/></span>rājñ<span class=ending-regular>oḥ</span></td>
+   </tr>
+   <tr>
+    <th class=section>Plural</th>
+   </tr>
+   <tr>
+    <th>Nom/Voc</th>
+	<td><span class=ending-regular>-aḥ</span></td>
+	<td><span class=devanagari>गजाः<br/></span>gaj<span class=ending-regular>āḥ</span></td>
+	<td><span class=devanagari>अन्ये<br/></span>any<span class=ending-irregular>e</span></td>
+	<td rowspan=2><span class=devanagari>अन्याः<br/></span>any<span class=ending-regular>āḥ</span></td>
+	<td rowspan=2><span class=devanagari>मुद्राः<br/></span>mudr<span class=ending-regular>āḥ</span></td>
+	<td><span class=devanagari>अग्नयः<br/></span>
+		agn<span class=stem-change>ay</span><span class=ending-regular>aḥ</span> [<span class=stem-change>V</span>]</td>
+	<td><span class=devanagari>रात्रयः<br/></span>
+		rātr<span class=stem-change>ay</span><span class=ending-regular>aḥ</span> [<span class=stem-change>V</span>]</td>
+	<td><span class=devanagari>गुरवः<br/></span>
+		gur<span class=stem-change>av</span><span class=ending-regular>aḥ</span> [<span class=stem-change>V</span>]</td>
+	<td><span class=devanagari>धेनवः<br/></span>
+		dhen<span class=stem-change>av</span><span class=ending-regular>aḥ</span> [<span class=stem-change>V</span>]</td>
+	<td><span class=devanagari>देव्यः<br/></span>devy<span class=ending-regular>aḥ</span></td>
+	<td><span class=devanagari>वध्वः<br/></span>vadhv<span class=ending-regular>aḥ</span></td>
+	<td class=stem-strong><span class=devanagari>दातारः<br/></span>dātār<span class=ending-regular>aḥ</span></td>
+	<td class=stem-strong><span class=devanagari>राजानः<br/></span>rājān<span class=ending-regular>aḥ</span></td>
+   </tr>
+   <tr>
+    <th>Acc</th>
+	<td><span class=ending-regular>-<span class=stem-change>L</span>n / -<span class=stem-change>L</span>ḥ</span><sup></sup></td>
+	<td><span class=devanagari>गजान्<br/></span>gaj<span class=ending-regular>ān</span></td>
+	<td><span class=devanagari>अन्यान्<br/></span>any<span class=ending-regular>ān</span></td>
+	<td><span class=devanagari>अग्नीन्<br/></span>agn<span class=ending-regular>īn</span></td>
+	<td><span class=devanagari>रात्रीः<br/></span>rātr<span class=ending-regular>īḥ</span></td>
+	<td><span class=devanagari>गुरून्<br/></span>gur<span class=ending-regular>ūn</span></td>
+	<td><span class=devanagari>धेनूः<br/></span>dhen<span class=ending-regular>ūḥ</span></td>
+	<td><span class=devanagari>देवीः<br/></span>dev<span class=ending-regular>īḥ</span></td>
+	<td><span class=devanagari>वधूः<br/></span>vadh<span class=ending-regular>ūḥ</span></td>
+	<td><span class=devanagari>दातॄन्<br/></span>dāt<span class=ending-regular>ṝn</span><sup>-</sup></td>
+	<td><span class=devanagari>राज्ञः<br/></span>rājñ<span class=ending-irregular>aḥ</span><sup>-</sup></td>
+   </tr>
+   <tr>
+    <th>Inst</th>
+	<td><span class=ending-regular>-bhiḥ</span></td>
+	<td><span class=devanagari>गजैः<br/></span>gaja<span class=ending-irregular>iḥ</span></td>
+	<td><span class=devanagari>अन्यैः<br/></span>anya<span class=ending-irregular>iḥ</span></td>
+	<td><span class=devanagari>अन्याभिः<br/></span>anyā<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>मुद्राभिः<br/></span>mudrā<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>अग्निभिः<br/></span>agni<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>रात्रिभिः<br/></span>rātri<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>गुरुभिः<br/></span>guru<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>धेनुभिः<br/></span>dhenu<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>देवीभिः<br/></span>devī<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>वधूभिः<br/></span>vadhū<span class=ending-regular>bhiḥ</span></td>
+	<td><span class=devanagari>दातृभिः<br/></span>dātṛ<span class=ending-regular>bhiḥ</span></td>
+	<td class=stem-middle><span class=devanagari>राजभिः<br/></span>rāja<span class=ending-regular>bhiḥ</span></td>
+   </tr>
+   <tr>
+    <th>Dat/Abl</th>
+	<td><span class=ending-regular>-bhyaḥ</span></td>
+	<td><span class=devanagari>गजेभ्यः<br/></span>
+		gaj<span class=stem-change>e</span><span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>अन्येभ्यः<br/></span>
+		any<span class=stem-change>e</span><span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>अन्याभ्यः<br/></span>anyā<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>मुद्राभ्यः<br/></span>mudrā<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>अग्निभ्यः<br/></span>agni<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>रात्रिभ्यः<br/></span>rātri<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>गुरुभ्यः<br/></span>guru<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>धेनुभ्यः<br/></span>dhenu<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>देवीभ्यः<br/></span>devī<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>वधूभ्यः<br/></span>vadhū<span class=ending-regular>bhyaḥ</span></td>
+	<td><span class=devanagari>दातृभ्यः<br/></span>dātṛ<span class=ending-regular>bhyaḥ</span></td>
+	<td class=stem-middle><span class=devanagari>राजभ्यः<br/></span>rāja<span class=ending-regular>bhyaḥ</span></td>
+   </tr>
+   <tr>
+    <th>Gen</th>
+	<td><span class=ending-regular>-<span class=stem-change>L</span>[n]ām</span><sup></sup></td>
+	<td><span class=devanagari>गजानाम्<br/></span>gajā<span class=ending-regular>nām</span></td>
+	<td><span class=devanagari>अन्येषाम्<br/></span>
+		any<span class=stem-change>e</span><span class=suffix>ṣ</span><span class=ending-regular>ām</span></td>
+	<td><span class=devanagari>अन्यासाम्<br/></span>anyā<span class=suffix>s</span><span class=ending-regular>ām</span></td>
+	<td><span class=devanagari>मुद्राणाम्<br/></span>mudrā<span class=ending-regular>ṇām</span></td>
+	<td><span class=devanagari>अग्नीनाम्<br/></span>agn<span class=ending-regular>īnām</span></td>
+	<td><span class=devanagari>रात्रीणाम्<br/></span>rātr<span class=ending-regular>īṇām</span></td>
+	<td><span class=devanagari>गुरूणाम्<br/></span>gur<span class=ending-regular>ūṇām</span></td>
+	<td><span class=devanagari>धेनूनाम्<br/></span>dhen<span class=ending-regular>ūnām</span></td>
+	<td><span class=devanagari>देवीनाम्<br/></span>devī<span class=ending-regular>nām</span></td>
+	<td><span class=devanagari>वधूनाम्<br/></span>vadhū<span class=ending-regular>nām</span></td>
+	<td><span class=devanagari>दातॄणाम्<br/></span>dāt<span class=ending-regular>ṝṇām</span></td>
+	<td><span class=devanagari>राज्ञाम्<br/></span>rājñ<span class=ending-regular>ām</span><sup>-</sup></td>
+   </tr>
+   <tr>
+    <th>Loc</th>
+	<td><span class=ending-regular>-su</span></td>
+	<td><span class=devanagari>गजेषु<br/></span>gaj<span class=stem-change>e</span><span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>अन्येषु<br/></span>any<span class=stem-change>e</span><span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>अन्यासु<br/></span>anyā<span class=ending-regular>su</span></td>
+	<td><span class=devanagari>मुद्रासु<br/></span>mudrā<span class=ending-regular>su</span></td>
+	<td><span class=devanagari>अग्निषु<br/></span>agni<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>रात्रिषु<br/></span>rātri<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>गुरुषु<br/></span>guru<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>धेनुषु<br/></span>dhenu<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>देवीषु<br/></span>devī<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>वधूषु<br/></span>vadhū<span class=ending-regular>ṣu</span></td>
+	<td><span class=devanagari>दातृषु<br/></span>dātṛ<span class=ending-regular>ṣu</span></td>
+	<td class=stem-middle><span class=devanagari>राजसु<br/></span>rāja<span class=ending-regular>su</span></td>
+   </tr>
+  </table>
+
+  <p>  
+   <sup>start-footnotes</sup> The pronominal declension is characterized by the inserted elements <span class=suffix>sm</span>/<span class=suffix>sy</span> 
+   and some irregular endings, and is followed by pronouns and a few adjectives. Most of those exhibit additional irregularities, which <i>anya</i> does not.<br/>
+   <sup></sup> Before vowel endings, polysyllabic stems in ī and ū regularly drop the final vowel and leave a semi-vowel; monosyllabic stems just shorten the final vowel.<br/>
+   <sup></sup> Specifically, -an stem, which in particular has separate stem forms for the strong, middle and weak cases.<br/>
+			   &ensp; The consonantal declension has several sub-groups which differ in the formation of stems and of the Nominative Singular; details can be found in the 
+			   <a href=http://littleredbook.vedicsociety.org.in/>Little Red Book</a>, for instance.</br>
+   <sup></sup> The regular ending -i combines with the stem-final -a to form the actual ending -e.<br/>
+   <sup></sup> Most ṛ-stems have their strong stem in -ār, the others in -ar; all form the Locative Singular in -ar.<br/>
+   <sup></sup> The vocative is technically the bare stem, as can be seen in the consonant stems; however, all short vowel stems gunate their final vowel.<br/>
+   <sup></sup> The masculine and feminine are identical in these cases, as a result of the regular vowel changes in the a-stems and ā-stems respectively.<br/>
+   <sup></sup> Masculines end in -n while feminines end in -ḥ throughout all declensions (except the consonantal one where both genders take -aḥ). For instance, 
+   the feminine ṛ-stem mātṛ <i>Mother</i> has the accusative plural mātṝḥ.<br/>
+   <sup></sup> The ending is properly -ām; but all vowel stems precede it with -n-, and short vowels are lengthened.<br/>
+ </body>
+</html>
